@@ -89,7 +89,7 @@ function NumResult({ movies }) {
     )
 }
 export default function App() {
-    const [query, setQuery] = useState("The Avengers");
+    const [query, setQuery] = useState("Avengers");
     const [movies, setMovies] = useState([]);
     const [watched, setWatched] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -116,7 +116,7 @@ export default function App() {
             try {
                 setIsLoading(true);
                 setError("");
-                const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=761673db&s=${query}`);
+                const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=761673db&s=${query}`);
                 if (query === '') throw new Error("Search for a movie");
                 if (!res.ok) throw new Error("Some thing went wrong with fetching movies");
                 const data = await res.json();
@@ -279,7 +279,7 @@ function MoviewDetails({ selectedId, setSelectedId, onAddWatched, watched }) {
         async function getMovieDetails() {
             try {
                 setIsLoading(true);
-                const res = await fetch(`http://www.omdbapi.com/?apikey=761673db&i=${selectedId}`);
+                const res = await fetch(`https://www.omdbapi.com/?apikey=761673db&i=${selectedId}`);
                 if (!res.ok) throw new Error("Some thing went wrong while fetching the movie");
                 const data = await res.json();
                 console.log(data);
